@@ -26,7 +26,7 @@ ntpd_conf:
 {% endif %}
 
 {% if 'ntpd' in ntp.settings %}
-{% if ntp.settings.ntpd %}
+{% if not service.get(ntp.settings.ntpd) == None %}
 ntpd:
   service.{{ service.get(ntp.settings.ntpd) }}:
     - name: {{ ntp.lookup.service }}
